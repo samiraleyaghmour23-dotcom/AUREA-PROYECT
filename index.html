@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Auréa — Secret Feminine Wellness</title>
+<meta name="description" content="Organic feminine wellness. Herbal steam pads and restorative gels crafted for sensitive skin." />
+<link rel="icon" type="image/webp" href="images/aurea-logo-opt.webp" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#FAF5EF',
+          'cream-dark': '#F3ECE1',
+          rose: '#C4877A',
+          'rose-light': '#EBD5CF',
+          'rose-blush': '#F7E3DD',
+          'rose-deep': '#9E6558',
+          earth: '#3E2E25',
+          'earth-soft': '#5C4A3E',
+          sage: '#8A9E7B',
+          'sage-light': '#C5D2B8',
+          gold: '#C9A84C',
+          'gold-soft': '#E3C878',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          sans: ['"DM Sans"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #FAF5EF; color: #3E2E25; overflow-x: hidden; }
+  h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: -0.01em; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 45s linear infinite; }
+  @keyframes float-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .float-slow { animation: float-slow 7s ease-in-out infinite; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.show { opacity: 1; transform: translateY(0); }
+  .product-card { transition: transform 0.5s cubic-bezier(.2,.8,.2,1), box-shadow 0.5s ease; }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -20px rgba(62,46,37,0.15); }
+  .texture-cream {
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(235, 213, 207, 0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(197, 210, 184, 0.3) 0%, transparent 55%),
+      #FAF5EF;
+  }
+  .ribbon { background: #3E2E25; color: #FAF5EF; letter-spacing: 0.22em; font-size: 10px; font-weight: 600; padding: 7px 14px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+  .ribbon .dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A84C; animation: pulse-dot 1.8s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } }
+  .btn-primary { background: #3E2E25; color: #FAF5EF; transition: all 0.3s ease; }
+  .btn-primary:hover { background: #5C4A3E; transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: #3E2E25; border: 1.5px solid #3E2E25; transition: all 0.3s ease; }
+  .btn-secondary:hover { background: #3E2E25; color: #FAF5EF; }
+  .nav-link { position: relative; }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: #3E2E25; transition: width 0.35s ease; }
+  .nav-link:hover::after { width: 100%; }
+  section { padding: 6rem 0; }
+  @media (max-width: 768px) { section { padding: 4rem 0; } }
+  .container-x { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+  .notify-input { background: rgba(250, 245, 239, 0.6); border: none; border-bottom: 1px solid #3E2E25; color: #3E2E25; font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 12px 4px; width: 100%; outline: none; transition: border-color 0.3s ease; }
+  .notify-input::placeholder { color: rgba(62,46,37,0.45); }
+  .notify-input:focus { border-color: #C9A84C; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+  details summary { list-style: none; cursor: pointer; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+  .faq-icon { transition: transform 0.3s ease; }
+  details { border-bottom: 1px solid rgba(62,46,37,0.15); }
+  .step-number { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; }
+  .ingredient-circle { aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; background: #FFF; border: 1.5px solid rgba(62,46,37,0.1); transition: transform 0.4s ease, border-color 0.4s ease; }
+  .ingredient-circle:hover { transform: scale(1.05); border-color: #C9A84C; }
+  .ingredient-circle img { width: 100%; height: 100%; object-fit: cover; }
+  .zoom-img { overflow: hidden; }
+  .zoom-img img { transition: transform 0.8s ease; }
+  .zoom-img:hover img { transform: scale(1.06); }
+  .testimonial-track { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .testimonial-card { scroll-snap-align: start; }
+  .testimonial-track::-webkit-scrollbar { height: 6px; }
+  .testimonial-track::-webkit-scrollbar-track { background: #EBD5CF; border-radius: 3px; }
+  .testimonial-track::-webkit-scrollbar-thumb { background: #9E6558; border-radius: 3px; }
+  @media (max-width: 900px) { .desktop-nav { display: none; } .mobile-menu-btn { display: flex; } }
+  @media (min-width: 901px) { .mobile-menu-btn { display: none; } }
+  #mobile-menu { display: none; }
+  #mobile-menu.open { display: block; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .pp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  @media (max-width: 768px) { .pp-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ============ ANNOUNCEMENT ============ -->
+<div class="bg-earth text-cream text-center py-2.5 text-xs tracking-[0.22em] uppercase font-medium">
+  Free US shipping over $60 · 12,000+ women restored
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-earth/10">
+  <nav class="container-x flex items-center justify-between py-4">
+    <a href="#" class="flex items-center gap-3">
+      <img src="images/aurea-logo-opt.webp" alt="Auréa" class="h-11 w-11 rounded-full object-cover bg-earth" />
+      <span class="serif text-[28px] leading-none text-earth tracking-wider hidden sm:inline">AURÉA</span>
+    </a>
+    <div class="desktop-nav flex items-center gap-9 text-sm">
+      <a href="#products" class="nav-link text-earth">Shop</a>
+      <a href="#ritual" class="nav-link text-earth">The ritual</a>
+      <a href="#science" class="nav-link text-earth">Ingredients</a>
+      <a href="#story" class="nav-link text-earth">Our story</a>
+      <a href="#reviews" class="nav-link text-earth">Reviews</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#products" class="btn-primary rounded-full px-5 py-2.5 text-xs tracking-[0.18em] uppercase font-medium">Shop now</a>
+      <button class="mobile-menu-btn w-9 h-9 items-center justify-center" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3E2E25" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="border-t border-earth/10 bg-cream">
+    <div class="container-x py-4 flex flex-col gap-4 text-sm">
+      <a href="#products" class="text-earth py-2">Shop</a>
+      <a href="#ritual" class="text-earth py-2">The ritual</a>
+      <a href="#science" class="text-earth py-2">Ingredients</a>
+      <a href="#story" class="text-earth py-2">Our story</a>
+      <a href="#reviews" class="text-earth py-2">Reviews</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="texture-cream relative overflow-hidden !pt-16 !pb-20">
+  <div class="container-x">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="tag bg-rose-light text-rose-deep mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-deep"></span>
+          Secret feminine wellness
+        </span>
+        <h1 class="serif text-earth text-[clamp(2.6rem,5.5vw,4.8rem)] leading-[1.04] mb-6">
+          Ancient rituals<br/>
+          for the women<br/>
+          <em class="text-rose-deep italic">who feel it all.</em>
+        </h1>
+        <p class="text-earth-soft text-lg leading-relaxed max-w-lg mb-8">
+          Certified organic. Plant-powered. Formulated for sensitive skin. Auréa is the intimate wellness ritual your grandmother knew about — and modern skincare forgot.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 mb-10">
+          <a href="#products" class="btn-primary rounded-full px-7 py-3.5 text-xs tracking-[0.2em] uppercase font-medium">
+            Shop the ritual →
+          </a>
+          <a href="#science" class="btn-secondary rounded-full px-7 py-3.5 text-xs tracking-[0.2em] uppercase font-medium">
+            Why it works
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-7 gap-y-3 text-[11px] text-earth-soft tracking-[0.18em] uppercase">
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Certified organic
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Fragrance-free
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Cruelty-free
+          </div>
+        </div>
+      </div>
+
+      <div class="relative reveal" style="transition-delay: 0.15s;">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="w-[480px] h-[480px] rounded-full bg-rose-light/30 blur-xl"></div>
+        </div>
+        <div class="relative rounded-[28px] overflow-hidden bg-rose-light/40 aspect-[4/5] float-slow">
+          <img src="images/steam-natural.webp" alt="Auréa Feminine Herbal Steam Pad with wildcrafted herbs" class="w-full h-full object-cover" />
+        </div>
+        <div class="absolute -bottom-6 -left-4 md:-left-8 bg-cream shadow-xl rounded-2xl px-5 py-4 border border-earth/10 max-w-[220px]">
+          <div class="flex items-center gap-1 text-gold text-sm mb-1">★★★★★</div>
+          <p class="text-xs text-earth-soft leading-relaxed"><span class="font-medium text-earth">"Easy setup, smells fantastic."</span> — Stacey C., verified</p>
+        </div>
+        <div class="absolute -top-4 -right-4 md:-right-8 bg-earth text-cream rounded-full px-4 py-3 text-[10px] tracking-[0.22em] uppercase font-medium">
+          Perfect for<br/>sensitive skin
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="bg-earth text-cream py-5 overflow-hidden border-y border-gold/20">
+  <div class="flex marquee-track whitespace-nowrap">
+    <div class="flex items-center gap-10 px-6 serif text-2xl italic">
+      <span>Certified organic botanicals</span><span class="text-gold">✦</span>
+      <span>Made for sensitive skin</span><span class="text-gold">✦</span>
+      <span>No synthetic fragrance</span><span class="text-gold">✦</span>
+      <span>Rooted in ancient wisdom</span><span class="text-gold">✦</span>
+      <span>Body-heat activated</span><span class="text-gold">✦</span>
+      <span>Restore your natural balance</span><span class="text-gold">✦</span>
+    </div>
+    <div class="flex items-center gap-10 px-6 serif text-2xl italic" aria-hidden="true">
+      <span>Certified organic botanicals</span><span class="text-gold">✦</span>
+      <span>Made for sensitive skin</span><span class="text-gold">✦</span>
+      <span>No synthetic fragrance</span><span class="text-gold">✦</span>
+      <span>Rooted in ancient wisdom</span><span class="text-gold">✦</span>
+      <span>Body-heat activated</span><span class="text-gold">✦</span>
+      <span>Restore your natural balance</span><span class="text-gold">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRODUCTS ============ -->
+<section id="products" class="bg-cream">
+  <div class="container-x">
+    <div class="text-center mb-16 reveal">
+      <span class="tag bg-sage-light text-earth mb-5">The collection</span>
+      <h2 class="serif text-earth text-[clamp(2.3rem,5vw,4rem)] leading-[1.05] mb-5">
+        Two rituals.<br/>
+        <em class="italic text-rose-deep">One complete practice.</em>
+      </h2>
+      <p class="text-earth-soft text-lg max-w-2xl mx-auto">
+        Monthly steam for deep release. Daily gel for continuous restoration. Together, they form the most intimate self-care rhythm you'll ever keep.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- STEAM PAD (SOLD OUT) -->
+      <div class="product-card bg-rose-light/40 rounded-[28px] p-7 md:p-9 relative overflow-hidden">
+        <div class="absolute top-6 right-6 z-20">
+          <span class="ribbon"><span class="dot"></span>Sold out</span>
+        </div>
+        <div class="relative mb-7 aspect-square rounded-[20px] overflow-hidden bg-rose-blush zoom-img">
+          <img data-product-main src="images/steam-packaging.webp" alt="Auréa Feminine Herbal Steam Pad packaging with 4 pads" class="w-full h-full object-cover" />
+          <div class="absolute bottom-4 left-4 bg-cream/95 backdrop-blur rounded-full px-4 py-1.5 text-[10px] tracking-[0.22em] uppercase text-earth font-medium">
+            4 pads · body-heat activated
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-6 product-thumbs">
+          <div class="aspect-square rounded-lg overflow-hidden border-2 border-earth zoom-img cursor-pointer"><img src="images/steam-packaging.webp" class="w-full h-full object-cover" alt=""/></div>
+          <div class="aspect-square rounded-lg overflow-hidden border border-earth/20 zoom-img cursor-pointer"><img src="images/steam-hero.webp" class="w-full h-full object-cover" alt=""/></div>
+          <div class="aspect-square rounded-lg overflow-hidden border border-earth/20 zoom-img cursor-pointer"><img src="images/steam-ingredients.webp" class="w-full h-full object-cover" alt=""/></div>
+          <div class="aspect-square rounded-lg overflow-hidden border border-earth/20 zoom-img cursor-pointer"><img src="images/steam-benefits.webp" class="w-full h-full object-cover" alt=""/></div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 text-[11px] tracking-[0.18em] uppercase">
+            <span class="text-gold">★★★★★</span>
+            <span class="text-earth-soft">487 reviews</span>
+          </div>
+          <h3 class="serif text-[2rem] md:text-3xl text-earth leading-tight">Feminine Herbal Steam Pad</h3>
+          <p class="text-earth-soft leading-relaxed">
+            The sacred 20-minute ceremony. Body-heat activated — no water, no bowl, no setup. Made with 28+ wildcrafted organic herbs.
+          </p>
+          <ul class="space-y-2 py-2">
+            <li class="flex items-start gap-3 text-sm text-earth"><svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Soothes cramps, supports cycle rhythm</li>
+            <li class="flex items-start gap-3 text-sm text-earth"><svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Balances pH, reduces dryness and odor</li>
+            <li class="flex items-start gap-3 text-sm text-earth"><svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Wear anywhere — no boiling, no filters</li>
+          </ul>
+          <div class="flex items-end justify-between pt-4 border-t border-earth/15">
+            <div>
+              <p class="text-[10px] tracking-[0.22em] uppercase text-earth-soft mb-1">Retail</p>
+              <p class="serif text-3xl text-earth">$34<span class="text-xl">.00</span></p>
+            </div>
+            <button disabled class="bg-earth/25 text-cream rounded-full px-6 py-3 text-xs tracking-[0.18em] uppercase font-medium cursor-not-allowed">
+              Waitlist only
+            </button>
+          </div>
+          <div class="pt-4 border-t border-earth/10">
+            <label class="text-[11px] tracking-[0.22em] uppercase text-earth-soft block mb-3">Get notified · next drop within 2 weeks</label>
+            <form onsubmit="event.preventDefault(); this.querySelector('button').innerHTML='✓ You are in'; this.querySelector('input').value='';" class="flex gap-3 items-center">
+              <input type="email" placeholder="your@email.com" required class="notify-input" />
+              <button type="submit" class="btn-primary shrink-0 rounded-full px-5 py-2.5 text-[11px] tracking-[0.18em] uppercase font-medium">Notify me</button>
+            </form>
+          </div>
+          <a href="https://aureaherbal.com/products/feminine-herbal-steam" target="_blank" class="inline-flex items-center gap-2 text-xs text-earth-soft hover:text-earth tracking-[0.18em] uppercase mt-2">
+            View full product page →
+          </a>
+        </div>
+      </div>
+
+      <!-- GEL (IN STOCK) -->
+      <div class="product-card bg-rose-blush rounded-[28px] p-7 md:p-9 relative overflow-hidden">
+        <div class="absolute top-6 right-6 z-20">
+          <span class="tag bg-sage text-cream">
+            <span class="w-1.5 h-1.5 rounded-full bg-cream"></span>
+            In stock · new
+          </span>
+        </div>
+        <div class="relative mb-7 aspect-square rounded-[20px] overflow-hidden bg-rose-light/50 zoom-img">
+          <img data-product-main src="images/gel-hero.webp" alt="Auréa V-Fresh Restore Gel with natural botanical ingredients" class="w-full h-full object-cover" />
+          <div class="absolute bottom-4 left-4 bg-cream/95 backdrop-blur rounded-full px-4 py-1.5 text-[10px] tracking-[0.22em] uppercase text-earth font-medium">
+            5 tubes × 3g · applicators included
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mb-6 product-thumbs">
+          <div class="aspect-square rounded-lg overflow-hidden border-2 border-earth zoom-img cursor-pointer"><img src="images/gel-hero.webp" class="w-full h-full object-cover" alt=""/></div>
+          <div class="aspect-square rounded-lg overflow-hidden border border-earth/20 zoom-img cursor-pointer"><img src="images/gel-ingredients.webp" class="w-full h-full object-cover" alt=""/></div>
+          <div class="aspect-square rounded-lg overflow-hidden border border-earth/20 zoom-img cursor-pointer"><img src="images/gel-microbiome-opt.webp" class="w-full h-full object-cover" alt=""/></div>
+          <div class="aspect-square rounded-lg overflow-hidden border border-earth/20 zoom-img cursor-pointer"><img src="images/gel-women.webp" class="w-full h-full object-cover" alt=""/></div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 text-[11px] tracking-[0.18em] uppercase">
+            <span class="text-gold">★★★★★</span>
+            <span class="text-earth-soft">Launch edition</span>
+          </div>
+          <h3 class="serif text-[2rem] md:text-3xl text-earth leading-tight">V-Fresh Restore Gel</h3>
+          <p class="text-earth-soft leading-relaxed">
+            The 2-minute daily ritual. Supports microbiome balance, relieves dryness, and restores vitality — without harsh chemicals or hormones.
+          </p>
+          <ul class="space-y-2 py-2">
+            <li class="flex items-start gap-3 text-sm text-earth"><svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Supports intimate microbiome balance</li>
+            <li class="flex items-start gap-3 text-sm text-earth"><svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Relieves dryness with hyaluronic acid</li>
+            <li class="flex items-start gap-3 text-sm text-earth"><svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A9E7B" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Postpartum safe, hormone-free</li>
+          </ul>
+          <div class="flex items-end justify-between pt-4 border-t border-earth/15">
+            <div>
+              <p class="text-[10px] tracking-[0.22em] uppercase text-earth-soft mb-1">Retail</p>
+              <p class="serif text-3xl text-earth">$42<span class="text-xl">.00</span></p>
+              <p class="text-[11px] text-earth-soft mt-1">or subscribe & save 15%</p>
+            </div>
+            <a href="https://aureaherbal.com/products/aurea-v-fresh-restore-gel" target="_blank" class="btn-primary rounded-full px-7 py-3.5 text-xs tracking-[0.18em] uppercase font-medium">
+              Add to bag →
+            </a>
+          </div>
+          <a href="https://aureaherbal.com/products/aurea-v-fresh-restore-gel" target="_blank" class="inline-flex items-center gap-2 text-xs text-earth-soft hover:text-earth tracking-[0.18em] uppercase mt-2">
+            View full product page →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 bg-earth rounded-[28px] p-8 md:p-10 text-center relative overflow-hidden">
+      <svg class="absolute top-0 right-0 opacity-10" width="280" height="280" viewBox="0 0 300 300">
+        <circle cx="150" cy="150" r="120" fill="none" stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="150" cy="150" r="80" fill="none" stroke="#C9A84C" stroke-width="1"/>
+      </svg>
+      <span class="tag bg-gold/20 text-gold-soft mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+        The complete ritual
+      </span>
+      <h3 class="serif text-cream text-3xl md:text-4xl mb-4">Bundle & save when the steam pads return.</h3>
+      <p class="text-cream/70 max-w-xl mx-auto mb-6">
+        Monthly ceremony + daily practice. Save 15% when bundled — early access for the waitlist.
+      </p>
+      <button onclick="document.querySelector('.notify-input').focus();" class="inline-block border border-gold text-gold-soft hover:bg-gold hover:text-earth transition rounded-full px-7 py-3.5 text-xs tracking-[0.2em] uppercase font-medium">
+        Join the bundle waitlist
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAIN POINTS ============ -->
+<section class="bg-cream-dark">
+  <div class="container-x">
+    <div class="text-center mb-14 reveal max-w-3xl mx-auto">
+      <span class="tag bg-rose-light text-rose-deep mb-5">The truth no one tells you</span>
+      <h2 class="serif text-earth text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.05] mb-5">
+        Your body is not the problem.<br/>
+        <em class="italic text-rose-deep">The products you've been given are.</em>
+      </h2>
+      <p class="text-earth-soft text-lg">
+        Conventional feminine care relies on harsh astringents, synthetic fragrance, and one-size-fits-all formulas that ignore the most sensitive skin on the body.
+      </p>
+    </div>
+    <div class="pp-grid reveal">
+      <div class="bg-cream rounded-2xl p-6 relative overflow-hidden">
+        <div class="aspect-[16/10] rounded-xl overflow-hidden mb-5 zoom-img">
+          <img src="images/gel-inflammation-opt.webp" alt="" class="w-full h-full object-cover"/>
+        </div>
+        <h4 class="serif text-xl text-earth mb-2">Irritation that wasn't your fault</h4>
+        <p class="text-sm text-earth-soft leading-relaxed">
+          30% of women react to synthetic fragrance. The vulvar tissue is among the most sensitive in the body — yet most products treat it like an ashtray.
+        </p>
+      </div>
+      <div class="bg-cream rounded-2xl p-6 relative overflow-hidden">
+        <div class="aspect-[16/10] rounded-xl overflow-hidden mb-5 zoom-img">
+          <img src="images/gel-usage-opt.webp" alt="" class="w-full h-full object-cover"/>
+        </div>
+        <h4 class="serif text-xl text-earth mb-2">Dryness that deserves care</h4>
+        <p class="text-sm text-earth-soft leading-relaxed">
+          85% of postpartum women experience dryness. Perimenopause compounds it. Harsh tightening gels only make it worse.
+        </p>
+      </div>
+      <div class="bg-cream rounded-2xl p-6 relative overflow-hidden">
+        <div class="aspect-[16/10] rounded-xl overflow-hidden mb-5 zoom-img">
+          <img src="images/gel-moisturizing-opt.webp" alt="" class="w-full h-full object-cover"/>
+        </div>
+        <h4 class="serif text-xl text-earth mb-2">A ritual that was lost</h4>
+        <p class="text-sm text-earth-soft leading-relaxed">
+          Across Mayan, Korean, and African traditions, women steamed weekly. Modern hygiene reduced feminine care to a wipe and a prayer.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEAM PAD DEEP DIVE ============ -->
+<section class="bg-rose-blush">
+  <div class="container-x">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <span class="tag bg-rose-deep text-cream mb-5">Product 1</span>
+        <h2 class="serif text-earth text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.05] mb-6">
+          Rooted in nature —<br/>
+          <em class="italic text-rose-deep">made for you.</em>
+        </h2>
+        <p class="text-earth-soft text-lg leading-relaxed mb-6">
+          A gentle herbal steam ritual to cleanse, balance, and restore. Made with sacred, wildcrafted, organic herbs — because feminine wellness is sacred.
+        </p>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-rose-deep text-cream flex items-center justify-center shrink-0 serif text-lg">01</div>
+            <div><h5 class="serif text-lg text-earth mb-1">Supports pH balance</h5><p class="text-sm text-earth-soft">Restores the microbiome without disruption.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-rose-deep text-cream flex items-center justify-center shrink-0 serif text-lg">02</div>
+            <div><h5 class="serif text-lg text-earth mb-1">Eases cramps and bloating</h5><p class="text-sm text-earth-soft">Red raspberry leaf + papaya leaf support hormonal rhythm.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-rose-deep text-cream flex items-center justify-center shrink-0 serif text-lg">03</div>
+            <div><h5 class="serif text-lg text-earth mb-1">Reduces dryness and irritation</h5><p class="text-sm text-earth-soft">Lavender + calendula soothe reactive tissue.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-rose-deep text-cream flex items-center justify-center shrink-0 serif text-lg">04</div>
+            <div><h5 class="serif text-lg text-earth mb-1">Body-heat activated</h5><p class="text-sm text-earth-soft">No water. No seat. No filters. Wear anywhere.</p></div>
+          </div>
+        </div>
+        <a href="https://aureaherbal.com/products/feminine-herbal-steam" target="_blank" class="btn-primary inline-block rounded-full px-7 py-3.5 text-xs tracking-[0.2em] uppercase font-medium">
+          Join the waitlist →
+        </a>
+      </div>
+      <div class="relative reveal" style="transition-delay: 0.15s;">
+        <div class="rounded-[24px] overflow-hidden zoom-img aspect-[4/5]">
+          <img src="images/steam-benefits.webp" alt="Auréa Feminine Herbal Steam Pad benefits" class="w-full h-full object-cover"/>
+        </div>
+        <div class="absolute -bottom-5 -right-3 md:-right-5 bg-earth text-cream rounded-2xl px-5 py-4 shadow-lg max-w-[240px]">
+          <p class="text-[10px] tracking-[0.22em] uppercase text-gold-soft mb-1">28+ botanicals</p>
+          <p class="text-sm leading-snug">Red raspberry, lavender, papaya leaf, rose petals & more</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GEL DEEP DIVE ============ -->
+<section class="bg-cream">
+  <div class="container-x">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="relative order-2 md:order-1 reveal">
+        <div class="rounded-[24px] overflow-hidden zoom-img aspect-[4/5]">
+          <img src="images/gel-microbiome-opt.webp" alt="Auréa V-Fresh Restore Gel — microbiome balance" class="w-full h-full object-cover"/>
+        </div>
+        <div class="absolute -top-4 -left-3 md:-left-5 bg-sage text-cream rounded-2xl px-5 py-4 shadow-lg max-w-[220px]">
+          <p class="text-[10px] tracking-[0.22em] uppercase text-cream/70 mb-1">Proven results</p>
+          <p class="text-sm leading-snug">Feel firm. Feel fresh. Feel you — in 15 days.</p>
+        </div>
+      </div>
+      <div class="order-1 md:order-2 reveal" style="transition-delay: 0.15s;">
+        <span class="tag bg-sage text-cream mb-5">Product 2</span>
+        <h2 class="serif text-earth text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.05] mb-6">
+          Feel firm.<br/>
+          Feel fresh.<br/>
+          <em class="italic text-sage">Feel you.</em>
+        </h2>
+        <p class="text-earth-soft text-lg leading-relaxed mb-6">
+          Botanical ingredients help support intimate microbiome balance, keeping you fresh and odor-free. All-natural plant formula — 5 pre-dosed applicators.
+        </p>
+        <div class="grid grid-cols-3 gap-3 mb-8">
+          <div class="bg-cream-dark rounded-2xl p-4 text-center"><p class="serif text-3xl text-sage mb-1">100%</p><p class="text-[10px] tracking-[0.18em] uppercase text-earth-soft">Plant formula</p></div>
+          <div class="bg-cream-dark rounded-2xl p-4 text-center"><p class="serif text-3xl text-rose-deep mb-1">5×3g</p><p class="text-[10px] tracking-[0.18em] uppercase text-earth-soft">Pre-dosed</p></div>
+          <div class="bg-cream-dark rounded-2xl p-4 text-center"><p class="serif text-3xl text-earth mb-1">2min</p><p class="text-[10px] tracking-[0.18em] uppercase text-earth-soft">Daily ritual</p></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="flex items-center gap-3 bg-rose-blush rounded-xl p-3">
+            <div class="w-9 h-9 rounded-full bg-rose-deep flex items-center justify-center shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FAF5EF" stroke-width="2"><path d="M3 3l18 18M19.07 4.93a10 10 0 00-14.14 0l-1.41 1.41a10 10 0 0014.14 14.14l1.41-1.41a10 10 0 000-14.14z"/></svg>
+            </div>
+            <span class="text-sm text-earth">Fragrance-free</span>
+          </div>
+          <div class="flex items-center gap-3 bg-rose-blush rounded-xl p-3">
+            <div class="w-9 h-9 rounded-full bg-rose-deep flex items-center justify-center shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FAF5EF" stroke-width="2"><path d="M12 2v20"/><circle cx="12" cy="10" r="6"/></svg>
+            </div>
+            <span class="text-sm text-earth">100% pure</span>
+          </div>
+          <div class="flex items-center gap-3 bg-rose-blush rounded-xl p-3">
+            <div class="w-9 h-9 rounded-full bg-rose-deep flex items-center justify-center shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FAF5EF" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <span class="text-sm text-earth">Alcohol-free</span>
+          </div>
+          <div class="flex items-center gap-3 bg-rose-blush rounded-xl p-3">
+            <div class="w-9 h-9 rounded-full bg-rose-deep flex items-center justify-center shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FAF5EF" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <span class="text-sm text-earth">Made with love</span>
+          </div>
+        </div>
+        <a href="https://aureaherbal.com/products/aurea-v-fresh-restore-gel" target="_blank" class="btn-primary inline-block rounded-full px-7 py-3.5 text-xs tracking-[0.2em] uppercase font-medium">
+          Shop V-Fresh Gel →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RITUAL ============ -->
+<section id="ritual" class="bg-cream-dark">
+  <div class="container-x">
+    <div class="text-center mb-16 reveal max-w-3xl mx-auto">
+      <span class="tag bg-earth text-cream mb-5">Your ritual</span>
+      <h2 class="serif text-earth text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.05] mb-5">
+        A complete wellness rhythm,<br/>
+        <em class="italic text-rose-deep">in four simple moments.</em>
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-5">
+      <div class="bg-cream rounded-[20px] p-7 reveal">
+        <div class="step-number bg-rose-light text-rose-deep mb-5">01</div>
+        <h4 class="serif text-2xl text-earth mb-3">Choose your moment</h4>
+        <p class="text-sm text-earth-soft leading-relaxed">Reserve 20 minutes once a cycle for the steam. Two minutes daily for the gel. Ritual, not routine.</p>
+      </div>
+      <div class="bg-cream rounded-[20px] p-7 reveal" style="transition-delay: 0.1s;">
+        <div class="step-number bg-sage-light text-earth mb-5">02</div>
+        <h4 class="serif text-2xl text-earth mb-3">Activate with warmth</h4>
+        <p class="text-sm text-earth-soft leading-relaxed">Body heat activates the steam pad — no water, no bowl. The gel warms on contact.</p>
+      </div>
+      <div class="bg-cream rounded-[20px] p-7 reveal" style="transition-delay: 0.2s;">
+        <div class="step-number bg-gold/30 text-earth mb-5">03</div>
+        <h4 class="serif text-2xl text-earth mb-3">Let botanicals work</h4>
+        <p class="text-sm text-earth-soft leading-relaxed">Red raspberry, lavender, and hyaluronic acid restore what harsh products disrupt.</p>
+      </div>
+      <div class="bg-cream rounded-[20px] p-7 reveal" style="transition-delay: 0.3s;">
+        <div class="step-number bg-earth text-cream mb-5">04</div>
+        <h4 class="serif text-2xl text-earth mb-3">Feel the shift</h4>
+        <p class="text-sm text-earth-soft leading-relaxed">Calmer cycles. Balanced pH. Reconnection. Most women notice within 2 weeks.</p>
+      </div>
+    </div>
+    <div class="mt-16 reveal">
+      <div class="rounded-[28px] overflow-hidden bg-cream shadow-sm">
+        <div class="grid md:grid-cols-3">
+          <div class="p-8 md:p-10 md:col-span-1 flex flex-col justify-center">
+            <span class="tag bg-rose-light text-rose-deep mb-4 w-fit">Designed for life</span>
+            <h3 class="serif text-3xl text-earth leading-tight mb-3">Every phase,<br/>every woman.</h3>
+            <p class="text-earth-soft text-sm">From first cycle to perimenopause — Auréa meets you where you are.</p>
+          </div>
+          <div class="md:col-span-2 grid grid-cols-3 gap-px bg-earth/10">
+            <div class="bg-cream p-5 text-center">
+              <p class="serif italic text-gold text-lg mb-2">01</p>
+              <p class="text-sm text-earth font-medium mb-1">Daily care</p>
+              <p class="text-xs text-earth-soft">Morning ritual, 2 minutes</p>
+            </div>
+            <div class="bg-cream p-5 text-center">
+              <p class="serif italic text-gold text-lg mb-2">02</p>
+              <p class="text-sm text-earth font-medium mb-1">Postpartum</p>
+              <p class="text-xs text-earth-soft">Gentle after 6-week clearance</p>
+            </div>
+            <div class="bg-cream p-5 text-center">
+              <p class="serif italic text-gold text-lg mb-2">03</p>
+              <p class="text-sm text-earth font-medium mb-1">Perimenopause</p>
+              <p class="text-xs text-earth-soft">Hormone-free support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INGREDIENTS ============ -->
+<section id="science" class="bg-cream">
+  <div class="container-x">
+    <div class="text-center mb-14 reveal max-w-3xl mx-auto">
+      <span class="tag bg-sage-light text-earth mb-5">Pure plant power</span>
+      <h2 class="serif text-earth text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.05] mb-5">
+        No dyes. No chemicals.<br/>
+        <em class="italic text-rose-deep">No artificial fragrances.</em>
+      </h2>
+      <p class="text-earth-soft text-lg">
+        Just certified organic herbs and botanicals — pure, intentional, and made to honor your body.
+      </p>
+    </div>
+
+    <div class="mb-16 reveal">
+      <p class="text-[11px] tracking-[0.22em] uppercase text-earth-soft text-center mb-8">Steam pad · hero botanicals</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="text-center">
+          <div class="ingredient-circle mb-3"><img src="images/steam-ingredients.webp" alt="Red Raspberry Leaf" style="object-position: 12% 35%; transform: scale(2.2);" /></div>
+          <p class="serif italic text-xl text-earth">Red Raspberry</p>
+          <p class="text-xs text-earth-soft">Tones uterine muscles</p>
+        </div>
+        <div class="text-center">
+          <div class="ingredient-circle mb-3"><img src="images/steam-ingredients.webp" alt="Lavender" style="object-position: 82% 35%; transform: scale(2.2);" /></div>
+          <p class="serif italic text-xl text-earth">Lavender</p>
+          <p class="text-xs text-earth-soft">Anti-inflammatory, calming</p>
+        </div>
+        <div class="text-center">
+          <div class="ingredient-circle mb-3"><img src="images/steam-ingredients.webp" alt="Papaya Leaf" style="object-position: 12% 75%; transform: scale(2.2);" /></div>
+          <p class="serif italic text-xl text-earth">Papaya Leaf</p>
+          <p class="text-xs text-earth-soft">Supports hormonal balance</p>
+        </div>
+        <div class="text-center">
+          <div class="ingredient-circle mb-3"><img src="images/steam-ingredients.webp" alt="Rose Petals" style="object-position: 82% 75%; transform: scale(2.2);" /></div>
+          <p class="serif italic text-xl text-earth">Rose Petals</p>
+          <p class="text-xs text-earth-soft">Soothing, mildly astringent</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="text-[11px] tracking-[0.22em] uppercase text-earth-soft text-center mb-8">V-Fresh gel · active extracts</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <div class="bg-rose-blush rounded-2xl p-5 text-center">
+          <div class="ingredient-circle w-20 h-20 mx-auto mb-3"><img src="images/gel-ingredients-grid-opt.webp" alt="" style="object-position: 15% 15%; transform: scale(3);" /></div>
+          <p class="serif italic text-lg text-earth">Ixeris Denticulata</p>
+          <p class="text-xs text-earth-soft mt-1">Natural cleansing extract</p>
+        </div>
+        <div class="bg-rose-blush rounded-2xl p-5 text-center">
+          <div class="ingredient-circle w-20 h-20 mx-auto mb-3"><img src="images/gel-ingredients-grid-opt.webp" alt="" style="object-position: 50% 15%; transform: scale(3);" /></div>
+          <p class="serif italic text-lg text-earth">Lagerstroemia</p>
+          <p class="text-xs text-earth-soft mt-1">Anti-inflammatory botanical</p>
+        </div>
+        <div class="bg-rose-blush rounded-2xl p-5 text-center">
+          <div class="ingredient-circle w-20 h-20 mx-auto mb-3"><img src="images/gel-ingredients-grid-opt.webp" alt="" style="object-position: 85% 15%; transform: scale(3);" /></div>
+          <p class="serif italic text-lg text-earth">Dianthus Chinensis</p>
+          <p class="text-xs text-earth-soft mt-1">Skin-soothing extract</p>
+        </div>
+        <div class="bg-rose-blush rounded-2xl p-5 text-center">
+          <div class="ingredient-circle w-20 h-20 mx-auto mb-3"><img src="images/gel-ingredients-grid-opt.webp" alt="" style="object-position: 15% 85%; transform: scale(3);" /></div>
+          <p class="serif italic text-lg text-earth">Hedyotis Diffusa</p>
+          <p class="text-xs text-earth-soft mt-1">Traditional purifying herb</p>
+        </div>
+        <div class="bg-rose-blush rounded-2xl p-5 text-center">
+          <div class="ingredient-circle w-20 h-20 mx-auto mb-3"><img src="images/gel-ingredients-grid-opt.webp" alt="" style="object-position: 50% 85%; transform: scale(3);" /></div>
+          <p class="serif italic text-lg text-earth">Oxycoccus Extract</p>
+          <p class="text-xs text-earth-soft mt-1">Cranberry — UTI support</p>
+        </div>
+        <div class="bg-rose-blush rounded-2xl p-5 text-center">
+          <div class="ingredient-circle w-20 h-20 mx-auto mb-3"><img src="images/gel-ingredients-grid-opt.webp" alt="" style="object-position: 85% 85%; transform: scale(3);" /></div>
+          <p class="serif italic text-lg text-earth">Hyaluronic Acid</p>
+          <p class="text-xs text-earth-soft mt-1">Deep hydration</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section id="story" class="bg-earth text-cream relative overflow-hidden">
+  <svg class="absolute top-10 left-10 opacity-10" width="200" height="200" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3 8"/>
+    <circle cx="100" cy="100" r="50" fill="none" stroke="#C9A84C" stroke-width="1"/>
+  </svg>
+  <div class="container-x relative">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <span class="tag bg-gold/20 text-gold-soft mb-5">Our story</span>
+      <h2 class="serif text-cream text-[clamp(2rem,4vw,3.4rem)] leading-[1.1] mb-8">
+        We built Auréa because feminine wellness had been reduced to a fragrance aisle.
+      </h2>
+      <p class="text-cream/75 text-lg leading-relaxed mb-5">
+        The products were loud. The colors were plastic-pink. The ingredients didn't respect the most sensitive skin on the body.
+      </p>
+      <p class="text-cream/75 text-lg leading-relaxed mb-5">
+        So we went back to what worked — to the Mayan <em class="text-gold-soft not-italic">bajos</em>, the Korean <em class="text-gold-soft not-italic">chai-yok</em>, the African herbal steams women have practiced for thousands of years.
+      </p>
+      <p class="text-cream/75 text-lg leading-relaxed">
+        And we formulated them for the woman who feels <em class="text-gold-soft">everything</em> — the one who noticed something was off, trusted herself, and came looking for something better.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-gold/20">
+      <div class="text-center"><p class="serif text-gold-soft text-[clamp(2.5rem,4vw,4rem)] leading-none mb-2">12k+</p><p class="text-cream/60 text-xs tracking-[0.22em] uppercase">Women served</p></div>
+      <div class="text-center"><p class="serif text-gold-soft text-[clamp(2.5rem,4vw,4rem)] leading-none mb-2">100%</p><p class="text-cream/60 text-xs tracking-[0.22em] uppercase">Organic</p></div>
+      <div class="text-center"><p class="serif text-gold-soft text-[clamp(2.5rem,4vw,4rem)] leading-none mb-2">4.9<span class="text-2xl">★</span></p><p class="text-cream/60 text-xs tracking-[0.22em] uppercase">Avg rating</p></div>
+      <div class="text-center"><p class="serif text-gold-soft text-[clamp(2.5rem,4vw,4rem)] leading-none mb-2">0</p><p class="text-cream/60 text-xs tracking-[0.22em] uppercase">Synthetic fragrance</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESIGNED FOR WOMEN ============ -->
+<section class="bg-cream">
+  <div class="container-x">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="rounded-[28px] overflow-hidden zoom-img aspect-[5/4] reveal">
+        <img src="images/gel-women.webp" alt="Auréa — designed for women's confidence, across all ages and skin tones" class="w-full h-full object-cover"/>
+      </div>
+      <div class="reveal" style="transition-delay: 0.1s;">
+        <span class="tag bg-rose-deep text-cream mb-5">For every woman</span>
+        <h2 class="serif text-earth text-[clamp(2rem,4vw,3.4rem)] leading-[1.05] mb-6">
+          Designed for <em class="italic text-rose-deep">women's confidence.</em>
+        </h2>
+        <p class="text-earth-soft text-lg leading-relaxed mb-8">
+          Every skin tone, every age, every body. Auréa was formulated to work with — not against — the most sensitive tissue you have. Reviewed by board-certified dermatologists.
+        </p>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4 pb-3 border-b border-earth/10">
+            <span class="serif text-2xl text-gold italic w-8">18+</span>
+            <span class="text-sm text-earth">From first cycle concerns</span>
+          </div>
+          <div class="flex items-center gap-4 pb-3 border-b border-earth/10">
+            <span class="serif text-2xl text-gold italic w-8">30s</span>
+            <span class="text-sm text-earth">Postpartum recovery & rhythm</span>
+          </div>
+          <div class="flex items-center gap-4 pb-3 border-b border-earth/10">
+            <span class="serif text-2xl text-gold italic w-8">40s</span>
+            <span class="text-sm text-earth">Perimenopausal dryness</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="serif text-2xl text-gold italic w-8">50+</span>
+            <span class="text-sm text-earth">Hormone-free support, anytime</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="bg-rose-blush">
+  <div class="container-x">
+    <div class="flex items-end justify-between mb-12 flex-wrap gap-6 reveal">
+      <div>
+        <span class="tag bg-earth text-cream mb-4">Reviews</span>
+        <h2 class="serif text-earth text-[clamp(2rem,4vw,3.4rem)] leading-[1.05]">
+          What women say <em class="italic text-rose-deep">after 30 days.</em>
+        </h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="serif text-4xl text-earth">4.9</span>
+        <div>
+          <div class="text-gold text-base">★★★★★</div>
+          <div class="text-xs text-earth-soft">487 verified reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-cream rounded-[28px] overflow-hidden mb-8 reveal">
+      <div class="grid md:grid-cols-5">
+        <div class="md:col-span-2 aspect-square md:aspect-auto">
+          <img src="images/steam-testimonial.webp" alt="" class="w-full h-full object-cover"/>
+        </div>
+        <div class="md:col-span-3 p-8 md:p-10 flex flex-col justify-center">
+          <div class="text-gold mb-4 text-lg">★★★★★</div>
+          <p class="serif italic text-earth text-2xl md:text-3xl leading-snug mb-6">
+            "Purchased to add to my self-care routine. I'm glad I did. Easy setup, clear instructions, smells fantastic, quick clean up. Very relaxing and fresh reset."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-rose-deep flex items-center justify-center text-cream font-medium">SC</div>
+            <div>
+              <p class="text-sm text-earth font-medium">Stacey C.</p>
+              <p class="text-xs text-earth-soft">Verified customer · Steam Pad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-track flex gap-5 overflow-x-auto pb-4 -mx-6 px-6">
+      <div class="testimonial-card shrink-0 w-[320px] bg-cream rounded-[20px] p-6">
+        <div class="text-gold mb-3 text-sm">★★★★★</div>
+        <p class="serif italic text-earth text-lg leading-snug mb-5">"It genuinely feels like a ceremony. I haven't had a product make me feel this <em>held</em> by my body in years."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-rose flex items-center justify-center text-cream text-sm font-medium">MK</div>
+          <div><p class="text-sm text-earth font-medium">Maya K.</p><p class="text-xs text-earth-soft">32 · Postpartum</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card shrink-0 w-[320px] bg-cream rounded-[20px] p-6">
+        <div class="text-gold mb-3 text-sm">★★★★★</div>
+        <p class="serif italic text-earth text-lg leading-snug mb-5">"My cycles changed within two months. Less cramping, lighter flow. I'm shocked — and a convert."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-sage flex items-center justify-center text-cream text-sm font-medium">AL</div>
+          <div><p class="text-sm text-earth font-medium">Alana L.</p><p class="text-xs text-earth-soft">28</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card shrink-0 w-[320px] bg-cream rounded-[20px] p-6">
+        <div class="text-gold mb-3 text-sm">★★★★★</div>
+        <p class="serif italic text-earth text-lg leading-snug mb-5">"I have the most reactive skin imaginable. Auréa is the first feminine product I've ever used with zero irritation."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-earth text-sm font-medium">JR</div>
+          <div><p class="text-sm text-earth font-medium">Jordan R.</p><p class="text-xs text-earth-soft">41</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card shrink-0 w-[320px] bg-cream rounded-[20px] p-6">
+        <div class="text-gold mb-3 text-sm">★★★★★</div>
+        <p class="serif italic text-earth text-lg leading-snug mb-5">"The gel is part of my morning now. Two minutes, feels luxurious, and I can <em>feel</em> the difference."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-earth flex items-center justify-center text-cream text-sm font-medium">SN</div>
+          <div><p class="text-sm text-earth font-medium">Sienna N.</p><p class="text-xs text-earth-soft">35</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card shrink-0 w-[320px] bg-cream rounded-[20px] p-6">
+        <div class="text-gold mb-3 text-sm">★★★★★</div>
+        <p class="serif italic text-earth text-lg leading-snug mb-5">"Packaging is beautiful, ingredients impeccable, and no fake rose smell. It smells like <em>herbs</em> — the way it should."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-rose-deep flex items-center justify-center text-cream text-sm font-medium">PD</div>
+          <div><p class="text-sm text-earth font-medium">Priya D.</p><p class="text-xs text-earth-soft">29</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="bg-cream-dark">
+  <div class="container-x">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <span class="tag bg-earth text-cream mb-4">Questions</span>
+        <h2 class="serif text-earth text-[clamp(2rem,4vw,3.4rem)] leading-[1.05]">
+          Answers, <em class="italic text-rose-deep">without the fluff.</em>
+        </h2>
+      </div>
+      <div>
+        <details class="py-5">
+          <summary class="flex justify-between items-center gap-4">
+            <span class="serif text-xl text-earth">Is this safe if I have sensitive skin?</span>
+            <span class="faq-icon text-earth text-2xl font-light">+</span>
+          </summary>
+          <p class="text-earth-soft text-base leading-relaxed mt-4 pr-10">
+            Yes — sensitive skin is exactly what Auréa was designed for. Every ingredient is screened for reactivity. We never use synthetic fragrance, parabens, sulfates, or alcohol-based astringents. We recommend a patch test on the inner arm first.
+          </p>
+        </details>
+        <details class="py-5">
+          <summary class="flex justify-between items-center gap-4">
+            <span class="serif text-xl text-earth">When will the steam pads be back in stock?</span>
+            <span class="faq-icon text-earth text-2xl font-light">+</span>
+          </summary>
+          <p class="text-earth-soft text-base leading-relaxed mt-4 pr-10">
+            Our next drop is within 2 weeks. Join the waitlist above and you'll get 24-hour early access before the public restock. Previous batches have sold out in under 4 days.
+          </p>
+        </details>
+        <details class="py-5">
+          <summary class="flex justify-between items-center gap-4">
+            <span class="serif text-xl text-earth">Can I use the gel during my period or postpartum?</span>
+            <span class="faq-icon text-earth text-2xl font-light">+</span>
+          </summary>
+          <p class="text-earth-soft text-base leading-relaxed mt-4 pr-10">
+            The V-Fresh Restore Gel is safe postpartum (after your 6-week clearance) and during menstruation. Many customers find it especially soothing during perimenopausal dryness. If pregnant, consult your OB first.
+          </p>
+        </details>
+        <details class="py-5">
+          <summary class="flex justify-between items-center gap-4">
+            <span class="serif text-xl text-earth">How is this different from a yoni wash or wipe?</span>
+            <span class="faq-icon text-earth text-2xl font-light">+</span>
+          </summary>
+          <p class="text-earth-soft text-base leading-relaxed mt-4 pr-10">
+            Washes and wipes clean the surface — often aggressively, disrupting pH and microbiome. Auréa works the opposite way: botanical warmth and plant humectants support the body's natural balance instead of overriding it. Restoration, not intervention.
+          </p>
+        </details>
+        <details class="py-5">
+          <summary class="flex justify-between items-center gap-4">
+            <span class="serif text-xl text-earth">How do I use the Steam Pad?</span>
+            <span class="faq-icon text-earth text-2xl font-light">+</span>
+          </summary>
+          <p class="text-earth-soft text-base leading-relaxed mt-4 pr-10">
+            Simply place the pad in your underwear. Your body heat activates the herbs — no water, no seat, no filters. Wear up to 3 hours. For regular issues, use every 2 weeks. For major concerns, once a week.
+          </p>
+        </details>
+        <details class="py-5">
+          <summary class="flex justify-between items-center gap-4">
+            <span class="serif text-xl text-earth">Shipping and returns?</span>
+            <span class="faq-icon text-earth text-2xl font-light">+</span>
+          </summary>
+          <p class="text-earth-soft text-base leading-relaxed mt-4 pr-10">
+            Free shipping on orders over $60 within the US (3–5 business days). 30-day money-back guarantee on unopened products. Honest-review refund if you finish the gel and it didn't work for you.
+          </p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="bg-rose-light relative overflow-hidden">
+  <svg class="absolute -left-10 -top-10 opacity-30" width="300" height="300" viewBox="0 0 300 300">
+    <circle cx="150" cy="150" r="100" fill="none" stroke="#9E6558" stroke-width="1"/>
+    <circle cx="150" cy="150" r="140" fill="none" stroke="#9E6558" stroke-width="1" stroke-dasharray="2 8"/>
+  </svg>
+  <svg class="absolute -right-10 -bottom-10 opacity-30" width="300" height="300" viewBox="0 0 300 300">
+    <path d="M150 30 C 80 100, 80 200, 150 270 C 220 200, 220 100, 150 30 Z" fill="none" stroke="#9E6558" stroke-width="1"/>
+  </svg>
+  <div class="container-x relative text-center">
+    <span class="tag bg-cream text-rose-deep mb-5">Join the ritual circle</span>
+    <h2 class="serif text-earth text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.05] mb-5 max-w-3xl mx-auto">
+      Restock alerts, ritual guides,<br/>
+      <em class="italic text-rose-deep">and the occasional love letter.</em>
+    </h2>
+    <p class="text-earth-soft text-lg max-w-xl mx-auto mb-10">
+      10% off your first order. No spam. Unsubscribe anytime.
+    </p>
+    <form onsubmit="event.preventDefault(); this.querySelector('button').innerHTML='✓ Welcome 🌿'; this.querySelector('input').value='';" class="flex flex-wrap gap-4 items-center justify-center max-w-xl mx-auto">
+      <input type="email" placeholder="your@email.com" required class="flex-1 min-w-[240px] bg-cream/70 px-5 py-3.5 rounded-full border border-earth/20 text-earth placeholder:text-earth/50 outline-none focus:border-rose-deep transition" />
+      <button type="submit" class="btn-primary rounded-full px-7 py-3.5 text-xs tracking-[0.2em] uppercase font-medium">Join →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-earth text-cream/80 pt-20 pb-8">
+  <div class="container-x">
+    <div class="grid md:grid-cols-4 gap-10 mb-16">
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-3 mb-5">
+          <img src="images/aurea-logo-opt.webp" alt="Auréa" class="h-11 w-11 rounded-full object-cover" />
+          <span class="serif text-[26px] leading-none text-cream tracking-wider">AURÉA</span>
+        </div>
+        <p class="text-sm leading-relaxed text-cream/60 mb-6">
+          Secret feminine wellness — organic, plant-powered, crafted for the woman who feels it all.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-cream/20 flex items-center justify-center hover:bg-cream/10 transition"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" aria-label="TikTok" class="w-9 h-9 rounded-full border border-cream/20 flex items-center justify-center hover:bg-cream/10 transition"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg></a>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-cream/20 flex items-center justify-center hover:bg-cream/10 transition"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35C.594 0 0 .593 0 1.325v21.351C0 23.407.594 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5 class="text-cream text-sm tracking-[0.22em] uppercase mb-5">Shop</h5>
+        <ul class="space-y-3 text-sm text-cream/60">
+          <li><a href="https://aureaherbal.com/products/feminine-herbal-steam" target="_blank" class="hover:text-cream transition">Steam pads</a></li>
+          <li><a href="https://aureaherbal.com/products/aurea-v-fresh-restore-gel" target="_blank" class="hover:text-cream transition">V-Fresh Restore Gel</a></li>
+          <li><a href="#" class="hover:text-cream transition">Bundle (waitlist)</a></li>
+          <li><a href="#" class="hover:text-cream transition">Gift cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-cream text-sm tracking-[0.22em] uppercase mb-5">Learn</h5>
+        <ul class="space-y-3 text-sm text-cream/60">
+          <li><a href="#ritual" class="hover:text-cream transition">The ritual</a></li>
+          <li><a href="#science" class="hover:text-cream transition">Ingredient science</a></li>
+          <li><a href="#story" class="hover:text-cream transition">Our story</a></li>
+          <li><a href="#reviews" class="hover:text-cream transition">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-cream text-sm tracking-[0.22em] uppercase mb-5">Support</h5>
+        <ul class="space-y-3 text-sm text-cream/60">
+          <li><a href="mailto:support.aurea@gmail.com" class="hover:text-cream transition">Contact us</a></li>
+          <li><a href="#" class="hover:text-cream transition">Shipping & returns</a></li>
+          <li><a href="#" class="hover:text-cream transition">Track order</a></li>
+          <li><a href="#" class="hover:text-cream transition">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-cream/15 flex flex-wrap justify-between items-center gap-4 text-xs text-cream/50">
+      <div>© 2026 Auréa Herbal. All rights reserved.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-cream transition">Privacy</a>
+        <a href="#" class="hover:text-cream transition">Terms</a>
+        <a href="#" class="hover:text-cream transition">Refund policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Thumbnail gallery
+  document.querySelectorAll('.product-card').forEach(card => {
+    const main = card.querySelector('[data-product-main]');
+    const thumbs = card.querySelectorAll('.product-thumbs > div');
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        if (!main) return;
+        const img = thumb.querySelector('img');
+        if (!img) return;
+        main.src = img.src;
+        thumbs.forEach(t => {
+          t.classList.remove('border-2', 'border-earth');
+          t.classList.add('border', 'border-earth/20');
+        });
+        thumb.classList.remove('border', 'border-earth/20');
+        thumb.classList.add('border-2', 'border-earth');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
