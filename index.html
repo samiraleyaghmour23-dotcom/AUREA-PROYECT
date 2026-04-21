@@ -37,7 +37,7 @@
   }
 </script>
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body { font-family: 'DM Sans', sans-serif; background: #FAF5EF; color: #3E2E25; overflow-x: hidden; }
   h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: -0.01em; }
   @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -65,8 +65,9 @@
   .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: #3E2E25; transition: width 0.35s ease; }
   .nav-link:hover::after { width: 100%; }
   section { padding: 6rem 0; }
-  @media (max-width: 768px) { section { padding: 4rem 0; } }
+  @media (max-width: 768px) { section { padding: 3rem 0; } }
   .container-x { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+  @media (max-width: 480px) { .container-x { padding: 0 1rem; } }
   .notify-input { background: rgba(250, 245, 239, 0.6); border: none; border-bottom: 1px solid #3E2E25; color: #3E2E25; font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 12px 4px; width: 100%; outline: none; transition: border-color 0.3s ease; }
   .notify-input::placeholder { color: rgba(62,46,37,0.45); }
   .notify-input:focus { border-color: #C9A84C; }
@@ -88,14 +89,103 @@
   .testimonial-track::-webkit-scrollbar { height: 6px; }
   .testimonial-track::-webkit-scrollbar-track { background: #EBD5CF; border-radius: 3px; }
   .testimonial-track::-webkit-scrollbar-thumb { background: #9E6558; border-radius: 3px; }
-  @media (max-width: 900px) { .desktop-nav { display: none; } .mobile-menu-btn { display: flex; } }
-  @media (min-width: 901px) { .mobile-menu-btn { display: none; } }
+  @media (max-width: 900px) { .desktop-nav { display: none !important; } .mobile-menu-btn { display: flex !important; } }
+  @media (min-width: 901px) { .mobile-menu-btn { display: none !important; } }
   #mobile-menu { display: none; }
   #mobile-menu.open { display: block; }
   .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
   @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 2rem; } }
   .pp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   @media (max-width: 768px) { .pp-grid { grid-template-columns: 1fr; } }
+
+  /* ===== MOBILE RESPONSIVE FIXES ===== */
+  @media (max-width: 640px) {
+    /* Hero floating badges — keep inside container */
+    .hero-grid > div.relative .absolute.-bottom-6 {
+      position: relative; bottom: auto; left: auto;
+      margin-top: 1rem; max-width: 100%;
+    }
+    .hero-grid > div.relative .absolute.-top-4 {
+      position: relative; top: auto; right: auto;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Float animation off on mobile for tap stability */
+    .float-slow { animation: none; }
+
+    /* Testimonial cards — fit phone */
+    .testimonial-card { width: 280px !important; }
+
+    /* Ritual 4-col grid → 2-col */
+    .grid.md\:grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* Gel stats grid — smaller text */
+    .grid.grid-cols-3.gap-3.mb-8 > div { padding: 0.75rem; }
+    .grid.grid-cols-3.gap-3.mb-8 .serif.text-3xl { font-size: 1.5rem; }
+
+    /* Gel attributes 2-col → 1-col */
+    .grid.grid-cols-2.gap-3.mb-8 { grid-template-columns: 1fr; }
+
+    /* Product cards — tighter padding */
+    .product-card { padding: 1.25rem !important; }
+    .product-card:hover { transform: none; box-shadow: none; }
+
+    /* Product price/CTA row — stack */
+    .product-card .flex.items-end.justify-between {
+      flex-direction: column; align-items: stretch; gap: 1rem;
+    }
+    .product-card .flex.items-end.justify-between .btn-primary,
+    .product-card .flex.items-end.justify-between button {
+      width: 100%; text-align: center;
+    }
+
+    /* Notify form — stack */
+    .product-card form.flex.gap-3 { flex-direction: column; }
+    .product-card form.flex.gap-3 .btn-primary { width: 100%; text-align: center; }
+
+    /* Deep dive floating info cards — inline */
+    .bg-rose-blush .grid.md\:grid-cols-2 .absolute,
+    .bg-cream .grid.md\:grid-cols-2 .absolute {
+      position: relative !important;
+      bottom: auto !important; top: auto !important;
+      left: auto !important; right: auto !important;
+      margin-top: 1rem; max-width: 100%;
+    }
+
+    /* Footer grid → 2 cols */
+    footer .grid.md\:grid-cols-4 { grid-template-columns: 1fr 1fr !important; gap: 2rem; }
+
+    /* Newsletter form — full width */
+    .bg-rose-light form input[type="email"] { min-width: 0 !important; width: 100%; }
+
+    /* Announcement bar — smaller text */
+    .bg-earth.text-cream.text-center { font-size: 9px; letter-spacing: 0.15em; padding: 6px 8px; }
+
+    /* Marquee text — scale down */
+    .marquee-track .serif.text-2xl { font-size: 1.1rem; }
+
+    /* Touch-friendly button sizes */
+    .btn-primary, .btn-secondary {
+      min-height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+
+    /* Featured review card — stack image/text */
+    .bg-cream.rounded-\[28px\].overflow-hidden .grid.md\:grid-cols-5 {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    /* Very small phones — single col for ritual */
+    .grid.md\:grid-cols-4 { grid-template-columns: 1fr !important; }
+
+    /* Gel stats — 1 col */
+    .grid.grid-cols-3.gap-3.mb-8 { grid-template-columns: 1fr; }
+
+    /* Footer — full stack */
+    footer .grid.md\:grid-cols-4 { grid-template-columns: 1fr !important; }
+  }
 </style>
 </head>
 <body>
@@ -128,11 +218,11 @@
   </nav>
   <div id="mobile-menu" class="border-t border-earth/10 bg-cream">
     <div class="container-x py-4 flex flex-col gap-4 text-sm">
-      <a href="#products" class="text-earth py-2">Shop</a>
-      <a href="#ritual" class="text-earth py-2">The ritual</a>
-      <a href="#science" class="text-earth py-2">Ingredients</a>
-      <a href="#story" class="text-earth py-2">Our story</a>
-      <a href="#reviews" class="text-earth py-2">Reviews</a>
+      <a href="#products" class="text-earth py-2" onclick="document.getElementById('mobile-menu').classList.remove('open')">Shop</a>
+      <a href="#ritual" class="text-earth py-2" onclick="document.getElementById('mobile-menu').classList.remove('open')">The ritual</a>
+      <a href="#science" class="text-earth py-2" onclick="document.getElementById('mobile-menu').classList.remove('open')">Ingredients</a>
+      <a href="#story" class="text-earth py-2" onclick="document.getElementById('mobile-menu').classList.remove('open')">Our story</a>
+      <a href="#reviews" class="text-earth py-2" onclick="document.getElementById('mobile-menu').classList.remove('open')">Reviews</a>
     </div>
   </div>
 </header>
@@ -375,7 +465,7 @@
     <div class="pp-grid reveal">
       <div class="bg-cream rounded-2xl p-6 relative overflow-hidden">
         <div class="aspect-[16/10] rounded-xl overflow-hidden mb-5 zoom-img">
-          <img src="images/gel-inflammation-opt.webp" alt="" class="w-full h-full object-cover"/>
+          <img src="images/gel-ingredients.webp" alt="" class="w-full h-full object-cover"/>
         </div>
         <h4 class="serif text-xl text-earth mb-2">Irritation that wasn't your fault</h4>
         <p class="text-sm text-earth-soft leading-relaxed">
